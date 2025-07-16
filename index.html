@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Translator</title>
+</head>
+<body>
+    <h2>Language Translator</h2>
+    <form action="/translate" method="post">
+        <textarea name="text" rows="4" cols="50" placeholder="Enter text to translate..."></textarea><br>
+        From: <input type="text" name="source" placeholder="e.g., en"><br>
+        To: <input type="text" name="target" placeholder="e.g., fr"><br>
+        <button type="submit">Translate</button>
+    </form>
+    {% if translated %}
+    <h3>Translated Text:</h3>
+    <p id="translated">{{ translated }}</p>
+    <button onclick="copyText()">Copy</button>
+    <script>
+        function copyText() {
+            const text = document.getElementById("translated").innerText;
+            navigator.clipboard.writeText(text);
+            alert("Text copied!");
+        }
+    </script>
+    {% endif %}
+</body>
+</html>
